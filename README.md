@@ -1,5 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Prerequisite (!IMPORTANT)
+
+`Using node v12.22.3 (npm v6.14.13)`
+
+We need clone and setup Custom Proxy for React App here:
+`git@gitlab.com:simflextech/vin-react-proxy.git`
+
 ## Environment
 
 In root folder, create `.env` file with content below:
@@ -12,18 +19,10 @@ In root folder, create `.env` file with content below:
     ESLINT_NO_DEV_ERRORS='true'
     DISABLE_ESLINT_PLUGIN=true
 
+    # API
     REACT_APP_MODE='DEVELOPMENT'
-    REACT_APP_API='https://dev4.vinceredev.com/'
+    REACT_APP_PROXY='http://localhost:4000/'
     REACT_APP_API_KEY_DEV='testsupertoken'
-
-    REACT_APP_ACCESS_TOKEN_URL='https://id.vincere.io/oauth2/token'
-    REACT_APP_AUTHORIZATION_URL='https://id.vincere.io/oauth2/authorize'
-    REACT_APP_REDIRECT_URL='https://id.vincere.io/oauth2/hello'
-    REACT_APP_LOGOUT_USER='https://id.vincere.io/oauth2/logout'
-    REACT_APP_USER_SERVICE_URL='https://id.vincere.io/oauth2/user'
-    REACT_APP_GRANT_TYPE='authorization_code'
-    REACT_APP_CLIENT_ID='0dead2cc-e2f8-4d09-8e7d-56220e1984b8'
-    REACT_APP_RESPONSE_TYPE='code'
 
 ``
 
@@ -34,7 +33,7 @@ In the project directory, you can run:
 ### `yarn start`
 
 Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:8085](http://localhost:8085) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.

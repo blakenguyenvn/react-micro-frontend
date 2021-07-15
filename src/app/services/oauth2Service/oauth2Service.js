@@ -29,39 +29,47 @@ class Oauth2Service extends VinUtils.EventEmitter {
 	};
 
 	connect = data => {
-		return this.getUserExample(data);
+		return this.getUser(data);
 	};
 
 	reconnect = data => {
-		return this.getUserExample(data);
+		return this.getUser(data);
 	};
 
 	disconnect = () => {
 		this.setSession(null);
 	};
 
-	mapUser = data => {
+	mapUser = mapData => {
 		return {
-			...data,
-			data: { displayName: data.full_name, photoURL: data.photo_url }
+			...mapData,
+			redirectUrl: '/',
+			role: 'admin',
+			data: {
+				displayName: mapData.full_name,
+				photoURL: mapData.photo_url
+			}
 		};
 	};
 
 	getUserExample = () => {
 		return new Promise((resolve, reject) => {
 			this.setSession(this.mapUser(exampleUser.content));
+
 			resolve(this.mapUser(exampleUser.content));
 		});
 	};
 
-	getUser = data => {
+	getUser = requestData => {
 		return new Promise((resolve, reject) => {
-			API.get(`/user?email=${data.email}`).then(response => {
-				if (response) {
-					this.setSession(this.mapUser(response.content));
-					resolve(this.mapUser(response.content));
+			API.get(`/user?email=${requestData.email}`).then(response => {
+				const { data } = response;
+
+				if (data) {
+					this.setSession(this.mapUser(data.content));
+					resolve(this.mapUser(data.content));
 				} else {
-					reject(response);
+					reject(data);
 				}
 			});
 		});
@@ -74,20 +82,6 @@ class Oauth2Service extends VinUtils.EventEmitter {
 			localStorage.removeItem('vc_user_access');
 			delete API.defaults.headers.common.Authorization;
 		}
-	};
-
-	isAuthTokenValid = access_token => {
-		if (!access_token) {
-			return false;
-		}
-		const decoded = jwtDecode(access_token);
-		const currentTime = Date.now() / 1000;
-		if (decoded.exp < currentTime) {
-			console.warn('access token expired');
-			return false;
-		}
-
-		return true;
 	};
 
 	getAccessToken = () => {

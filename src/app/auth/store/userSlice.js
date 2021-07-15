@@ -14,10 +14,9 @@ import oauth2Service from 'app/services/oauth2Service';
 export const setUserData = user => async (dispatch, getState) => {
 	/*
         You can redirect the logged-in user to a specific route depending on his role
-         */
-
+    */
 	history.location.state = {
-		redirectUrl: user.redirectUrl // for example 'apps/academy'
+		redirectUrl: user.redirectUrl
 	};
 
 	/*

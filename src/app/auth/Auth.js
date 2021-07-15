@@ -24,27 +24,13 @@ class Auth extends Component {
 
 	oauthCheck = () =>
 		new Promise(resolve => {
-			Oauth2Service.on('onAutoLogin', () => {
-				this.props.showMessage({ message: 'Logging in with JWT' });
+			Oauth2Service.on('onAutoLogin', accessedUser => {
+				this.props.setUserData(accessedUser);
+				this.props.showMessage({
+					message: 'Logged in with Vincere Oauth'
+				});
 
-				/**
-				 * Sign in and retrieve user data from Api
-				 */
-				Oauth2Service.reconnect()
-					.then(user => {
-						this.props.setUserData(user);
-
-						resolve();
-
-						this.props.showMessage({
-							message: 'Logged in with Vincere Oauth'
-						});
-					})
-					.catch(error => {
-						this.props.showMessage({ message: error.message });
-
-						resolve();
-					});
+				resolve();
 			});
 
 			Oauth2Service.on('onAutoLogout', message => {
