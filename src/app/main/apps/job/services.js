@@ -5,8 +5,10 @@ import _ from 'lodash';
 
 class JobDetailService extends VinUtils.EventEmitter {
 	getJob = requestData => {
+		const { payload } = requestData;
+
 		return new Promise((resolve, reject) => {
-			API.get(`/position/${requestData.id}`).then(response => {
+			API.get(`/position/${payload.jobId}`).then(response => {
 				if (response) {
 					resolve(response);
 				} else {
@@ -18,7 +20,7 @@ class JobDetailService extends VinUtils.EventEmitter {
 
 	putJob = requestData => {
 		return new Promise((resolve, reject) => {
-			API.put(`/position/${requestData.id}`, requestData).then(
+			API.put(`/position/${requestData.jobId}`, requestData).then(
 				response => {
 					if (response) {
 						resolve(response);

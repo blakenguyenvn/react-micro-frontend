@@ -1,28 +1,32 @@
 import { call, takeEvery, put } from 'redux-saga/effects';
-import { getJob } from './store/jobSlice';
-import { getJobs } from './store/jobListSlice';
+import { getJob, setJob } from './store/jobSlice';
+import { getJobs, setJobs } from './store/jobListSlice';
 import services from './services';
-import constants from './constants';
 
-export function* getJobDetail(request) {
+const constant = {
+	GET_JOB_FAILED: 'GET_JOB_FAILED',
+	GET_JOB_LIST_FAILED: 'GET_JOB_LIST_FAILED'
+};
+
+export function* getJobSaga(request) {
 	try {
 		const result = yield call(() => services.getJob(request));
-		yield put(getJob(result.data));
+		yield put(setJob(result.data));
 	} catch (e) {
-		yield put({ type: constants.JOB_DETAIL_FETCH });
+		yield put({ type: constant.GET_JOB_FAILED });
 	}
 }
 
-export function* getJobsList(request) {
+export function* getJobsSaga(request) {
 	try {
 		const result = yield call(() => services.getJobs(request));
-		yield put(getJobs(result.data));
+		yield put(setJobs(result.data));
 	} catch (e) {
-		yield put({ type: constants.JOB_DETAIL_FETCH });
+		yield put({ type: constant.GET_JOB_LIST_FAILED });
 	}
 }
 
 export default function* jobSaga() {
-	yield takeEvery(constants.GET_JOB_LIST, getJobsList);
-	yield takeEvery(constants.GET_JOB_DETAIL, getJobDetail);
+	yield takeEvery(getJob.type, getJobSaga);
+	yield takeEvery(getJobs.type, getJobsSaga);
 }

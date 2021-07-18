@@ -22,11 +22,11 @@ function JobApp(props) {
 				content: 'flex flex-col',
 				header: 'items-center min-h-72 h-72 sm:h-136 sm:min-h-136'
 			}}
-			content={routeParams.mailId ? <JobDetail /> : <JobTable />}
+			content={routeParams.jobId ? <JobDetail /> : <JobTable />}
 			ref={pageLayout}
 			innerScroll
 		/>
 	);
 }
 
-export default withReducer('JobApp', reducer)(JobApp);
+export default withReducer('jobApp', reducer)(JobApp);
