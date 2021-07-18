@@ -1,5 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
 import createReducer from './rootReducer';
+import rootSaga from './rootSaga';
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
 	module.hot.accept('./rootReducer', () => {
@@ -8,7 +10,16 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
 	});
 }
 
-const middlewares = [];
+// Config Saga to store middleware
+const sagaMiddleware = createSagaMiddleware();
+const middleware = [
+	...getDefaultMiddleware({
+		thunk: true,
+		immutableCheck: false,
+		serializableCheck: false
+	}),
+	sagaMiddleware
+];
 
 if (process.env.NODE_ENV === 'development') {
 	const { createLogger } = require(`redux-logger`);
@@ -16,18 +27,16 @@ if (process.env.NODE_ENV === 'development') {
 		collapsed: (getState, action, logEntry) => !logEntry.error
 	});
 
-	middlewares.push(logger);
+	middleware.push(logger);
 }
 
 const store = configureStore({
 	reducer: createReducer(),
-	middleware: getDefaultMiddleware =>
-		getDefaultMiddleware({
-			immutableCheck: false,
-			serializableCheck: false
-		}).concat(middlewares),
+	middleware,
 	devTools: process.env.NODE_ENV === 'development'
 });
+
+sagaMiddleware.run(rootSaga);
 
 store.asyncReducers = {};
 

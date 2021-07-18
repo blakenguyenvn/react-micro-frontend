@@ -151,9 +151,9 @@ const VinScrollbars = forwardRef((props, ref) => {
 	);
 });
 
-function mapStateToProps({ vin }) {
+function mapStateToProps({ common }) {
 	return {
-		customScrollbars: vin.settings.current.customScrollbars
+		customScrollbars: common.settings.current.customScrollbars
 	};
 }
 

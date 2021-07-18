@@ -1,17 +1,11 @@
-import CalendarAppConfig from './calendar/CalendarAppConfig';
-import ChatAppConfig from './chat/ChatAppConfig';
-import ContactsAppConfig from './contacts/ContactsAppConfig';
-import AnalyticsDashboardAppConfig from './dashboards/analytics/AnalyticsDashboardAppConfig';
-import ProjectDashboardAppConfig from './dashboards/project/ProjectDashboardAppConfig';
-import MailAppConfig from './mail/MailAppConfig';
+import JobAppConfig from './job/JobAppConfig';
+import AnalyticsDashboardAppConfig from './dashboard/analytics/AnalyticsDashboardAppConfig';
+import ProjectDashboardAppConfig from './dashboard/project/ProjectDashboardAppConfig';
 
 const appsConfigs = [
+	JobAppConfig,
 	AnalyticsDashboardAppConfig,
-	ProjectDashboardAppConfig,
-	MailAppConfig,
-	ContactsAppConfig,
-	CalendarAppConfig,
-	ChatAppConfig
+	ProjectDashboardAppConfig
 ];
 
 export default appsConfigs;

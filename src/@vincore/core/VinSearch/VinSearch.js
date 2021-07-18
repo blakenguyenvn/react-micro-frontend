@@ -18,7 +18,7 @@ import { memo, useEffect, useReducer, useRef } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { selectFlatNavigation } from 'app/store/vin/navigationSlice';
+import { selectFlatNavigation } from 'app/store/common/navigationSlice';
 
 function renderInputComponent(inputProps) {
 	const { variant, classes, inputRef = () => {}, ref, ...other } = inputProps;

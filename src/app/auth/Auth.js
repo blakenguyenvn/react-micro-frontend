@@ -1,10 +1,9 @@
 import VinSplashScreen from '@vincore/core/VinSplashScreen';
-import jwtService from 'app/services/jwtService';
 import Oauth2Service from 'app/services/oauth2Service';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
-import { hideMessage, showMessage } from 'app/store/vin/messageSlice';
+import { hideMessage, showMessage } from 'app/store/common/messageSlice';
 
 import { setUserData, logoutUser } from './store/userSlice';
 

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import VinScrollbars from '@vincore/core/VinScrollbars';
 import { useTheme, ThemeProvider } from '@material-ui/core/styles';
-import { selectContrastMainTheme } from 'app/store/vin/settingsSlice';
+import { selectContrastMainTheme } from 'app/store/common/settingsSlice';
 import clsx from 'clsx';
 
 function VinPageSimpleSidebarContent(props) {

@@ -1,11 +1,11 @@
 import Dialog from '@material-ui/core/Dialog';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeDialog } from 'app/store/vin/dialogSlice';
+import { closeDialog } from 'app/store/common/dialogSlice';
 
 function VinDialog(props) {
 	const dispatch = useDispatch();
-	const state = useSelector(({ vin }) => vin.dialog.state);
-	const options = useSelector(({ vin }) => vin.dialog.options);
+	const state = useSelector(({ common }) => common.dialog.state);
+	const options = useSelector(({ common }) => common.dialog.options);
 
 	return (
 		<Dialog

@@ -17,7 +17,7 @@ import clsx from 'clsx';
 import { useCallback, useMemo, memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUserSettings } from 'app/auth/store/userSlice';
-import { setDefaultSettings } from 'app/store/vin/settingsSlice';
+import { setDefaultSettings } from 'app/store/common/settingsSlice';
 
 const useStyles = makeStyles(theme => ({
 	root: {},
@@ -52,8 +52,8 @@ const useStyles = makeStyles(theme => ({
 function VinSettings(props) {
 	const dispatch = useDispatch();
 	const user = useSelector(({ auth }) => auth.user);
-	const themes = useSelector(({ vin }) => vin.settings.themes);
-	const settings = useSelector(({ vin }) => vin.settings.current);
+	const themes = useSelector(({ common }) => common.settings.themes);
+	const settings = useSelector(({ common }) => common.settings.current);
 	const { reset, watch, control } = useForm({
 		mode: 'onChange',
 		defaultValues: settings

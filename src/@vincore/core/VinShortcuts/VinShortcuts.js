@@ -10,7 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
-import { selectFlatNavigation } from 'app/store/vin/navigationSlice';
+import { selectFlatNavigation } from 'app/store/common/navigationSlice';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { memo, useRef, useState } from 'react';

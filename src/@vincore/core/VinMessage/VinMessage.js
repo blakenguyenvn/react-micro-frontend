@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { hideMessage } from 'app/store/vin/messageSlice';
+import { hideMessage } from 'app/store/common/messageSlice';
 
 const useStyles = makeStyles(theme => ({
 	root: {},
@@ -39,8 +39,8 @@ const variantIcon = {
 
 function VinMessage(props) {
 	const dispatch = useDispatch();
-	const state = useSelector(({ vin }) => vin.message.state);
-	const options = useSelector(({ vin }) => vin.message.options);
+	const state = useSelector(({ common }) => common.message.state);
+	const options = useSelector(({ common }) => common.message.options);
 
 	const classes = useStyles();
 

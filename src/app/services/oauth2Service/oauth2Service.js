@@ -1,6 +1,5 @@
 import VinUtils from '@vincore/utils/VinUtils';
 import API from 'api';
-import jwtDecode from 'jwt-decode';
 import _ from 'lodash';
 import exampleUser from './exampleUser.json';
 /* eslint-disable camelcase */

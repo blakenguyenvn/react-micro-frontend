@@ -5,7 +5,7 @@ import { useTheme, makeStyles } from '@material-ui/core/styles';
 
 import Tooltip from '@material-ui/core/Tooltip';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { navbarToggle, navbarToggleMobile } from 'app/store/vin/navbarSlice';
+import { navbarToggle, navbarToggleMobile } from 'app/store/common/navbarSlice';
 import clsx from 'clsx';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -68,7 +68,9 @@ function NavbarToggleFab(props) {
 	const classes = useStyles(props);
 	const theme = useTheme();
 	const mdDown = useMediaQuery(theme.breakpoints.down('md'));
-	const config = useSelector(({ vin }) => vin.settings.current.layout.config);
+	const config = useSelector(
+		({ common }) => common.settings.current.layout.config
+	);
 
 	const dispatch = useDispatch();
 

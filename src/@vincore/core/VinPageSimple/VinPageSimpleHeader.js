@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useTheme, ThemeProvider } from '@material-ui/core/styles';
-import { selectContrastMainTheme } from 'app/store/vin/settingsSlice';
+import { selectContrastMainTheme } from 'app/store/common/settingsSlice';
 
 function VinPageSimpleHeader(props) {
 	const theme = useTheme();

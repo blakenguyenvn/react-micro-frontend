@@ -1,13 +1,11 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import auth from 'app/auth/store';
-import vin from './vin';
-import i18n from './i18nSlice';
+import common from './common';
 
 const createReducer = asyncReducers => (state, action) => {
 	const combinedReducer = combineReducers({
 		auth,
-		vin,
-		i18n,
+		common,
 		...asyncReducers
 	});
 

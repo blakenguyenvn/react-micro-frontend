@@ -3,7 +3,7 @@ import VinLayouts from '@vincore/layouts/VinLayouts';
 import _ from '@lodash';
 import { makeStyles } from '@material-ui/core/styles';
 import AppContext from 'app/AppContext';
-import { generateSettings, setSettings } from 'app/store/vin/settingsSlice';
+import { generateSettings, setSettings } from 'app/store/common/settingsSlice';
 import { memo, useContext, useMemo, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { matchRoutes } from 'react-router-config';
@@ -81,8 +81,10 @@ const useStyles = makeStyles(theme => ({
 
 function VinLayout(props) {
 	const dispatch = useDispatch();
-	const settings = useSelector(({ vin }) => vin.settings.current);
-	const defaultSettings = useSelector(({ vin }) => vin.settings.defaults);
+	const settings = useSelector(({ common }) => common.settings.current);
+	const defaultSettings = useSelector(
+		({ common }) => common.settings.defaults
+	);
 
 	const appContext = useContext(AppContext);
 	const { routes } = appContext;

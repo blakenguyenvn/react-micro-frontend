@@ -1,7 +1,7 @@
-import layout3 from './layout3/Layout3Config';
+import layout from './layout/LayoutConfig';
 
 const VinLayoutConfigs = {
-	layout3
+	layout
 };
 
 export default VinLayoutConfigs;

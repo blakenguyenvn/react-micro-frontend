@@ -3,15 +3,18 @@ import IconButton from '@material-ui/core/IconButton';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useDispatch, useSelector } from 'react-redux';
-import { setDefaultSettings } from 'app/store/vin/settingsSlice';
+import { setDefaultSettings } from 'app/store/common/settingsSlice';
 import _ from '@lodash';
-import { navbarToggleMobile, navbarToggle } from '../../store/vin/navbarSlice';
+import {
+	navbarToggleMobile,
+	navbarToggle
+} from '../../store/common/navbarSlice';
 
 function NavbarToggleButton(props) {
 	const dispatch = useDispatch();
 	const theme = useTheme();
 	const mdDown = useMediaQuery(theme.breakpoints.down('md'));
-	const settings = useSelector(({ vin }) => vin.settings.current);
+	const settings = useSelector(({ common }) => common.settings.current);
 	const { config } = settings.layout;
 
 	return (

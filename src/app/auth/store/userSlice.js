@@ -6,9 +6,8 @@ import _ from '@lodash';
 import {
 	setInitialSettings,
 	setDefaultSettings
-} from 'app/store/vin/settingsSlice';
-import { showMessage } from 'app/store/vin/messageSlice';
-import jwtService from 'app/services/jwtService';
+} from 'app/store/common/settingsSlice';
+import { showMessage } from 'app/store/common/messageSlice';
 import oauth2Service from 'app/services/oauth2Service';
 
 export const setUserData = user => async (dispatch, getState) => {
@@ -31,8 +30,6 @@ export const updateUserSettings = settings => async (dispatch, getState) => {
 	const oldUser = getState().auth.user;
 	const user = _.merge({}, oldUser, { data: { settings } });
 
-	dispatch(updateUserData(user));
-
 	return dispatch(setUserData(user));
 };
 
@@ -45,8 +42,6 @@ export const updateUserShortcuts = shortcuts => async (dispatch, getState) => {
 			shortcuts
 		}
 	};
-
-	dispatch(updateUserData(user));
 
 	return dispatch(setUserData(newUser));
 };
@@ -68,21 +63,6 @@ export const logoutUser = () => async (dispatch, getState) => {
 	dispatch(setInitialSettings());
 
 	return dispatch(userLoggedOut());
-};
-
-export const updateUserData = user => async (dispatch, getState) => {
-	if (!user.role || user.role.length === 0) {
-		// is guest
-		return;
-	}
-	jwtService
-		.updateUserData(user)
-		.then(() => {
-			dispatch(showMessage({ message: 'User data saved with api' }));
-		})
-		.catch(error => {
-			dispatch(showMessage({ message: error.message }));
-		});
 };
 
 const initialState = {

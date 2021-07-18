@@ -1,7 +1,7 @@
-import layout3 from 'app/vin-layouts/layout3/Layout3';
+import layout from 'app/vin-layouts/layout/Layout';
 
 const VinLayouts = {
-	layout3
+	layout
 };
 
 export default VinLayouts;

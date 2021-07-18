@@ -1,5 +1,5 @@
 import { useTheme, ThemeProvider } from '@material-ui/core/styles';
-import { selectContrastMainTheme } from 'app/store/vin/settingsSlice';
+import { selectContrastMainTheme } from 'app/store/common/settingsSlice';
 import { useSelector } from 'react-redux';
 
 function VinPageCardedHeader(props) {

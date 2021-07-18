@@ -1,22 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import jwtService from 'app/services/jwtService';
 import oauth2Service from 'app/services/oauth2Service';
 import { setUserData } from './userSlice';
-
-export const submitLogin =
-	({ email, password }) =>
-	async dispatch => {
-		return jwtService
-			.signInWithEmailAndPassword(email, password)
-			.then(user => {
-				dispatch(setUserData(user));
-
-				return dispatch(loginSuccess());
-			})
-			.catch(errors => {
-				return dispatch(loginError(errors));
-			});
-	};
 
 export const oauthLogin =
 	({ email }) =>

@@ -5,8 +5,8 @@ import clsx from 'clsx';
 import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectNavigation } from 'app/store/vin/navigationSlice';
-import { navbarCloseMobile } from '../../store/vin/navbarSlice';
+import { selectNavigation } from 'app/store/common/navigationSlice';
+import { navbarCloseMobile } from '../../store/common/navbarSlice';
 
 function Navigation(props) {
 	const navigation = useSelector(selectNavigation);

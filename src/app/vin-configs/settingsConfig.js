@@ -1,6 +1,6 @@
 const settingsConfig = {
 	layout: {
-		style: 'layout3',
+		style: 'layout',
 		config: {}
 	},
 	customScrollbars: true,
