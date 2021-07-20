@@ -19,7 +19,6 @@ function JobDetail(props) {
 	const dispatch = useDispatch();
 
 	const jobDetail = useSelector(({ jobApp }) => jobApp.jobDetail);
-
 	const routeParams = useParams();
 
 	useDeepCompareEffect(() => {
